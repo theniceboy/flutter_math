@@ -23,6 +23,7 @@ class LayoutBuilderPreserveBaseline
 class _RenderLayoutBuilderPreserveBaseline extends RenderBox
     with
         RenderObjectWithChildMixin<RenderBox>,
+        RenderObjectWithLayoutCallbackMixin,
         RenderConstrainedLayoutBuilder<BoxConstraints, RenderBox> {
   @override
   double? computeDistanceToActualBaseline(TextBaseline baseline) =>
@@ -60,7 +61,7 @@ class _RenderLayoutBuilderPreserveBaseline extends RenderBox
   void performLayout() {
     final constraints = this.constraints;
     // layoutAndBuildChild(); // Flutter >=1.17.0 <1.18.0
-    rebuildIfNecessary(); // Flutter >=1.18.0
+    //rebuildIfNecessary(); // Flutter >=1.18.0
     if (child != null) {
       child!.layout(constraints, parentUsesSize: true);
       size = constraints.constrain(child!.size);
